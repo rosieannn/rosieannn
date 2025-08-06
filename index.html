@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rosie's Website</title>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Century Gothic', sans-serif;
+    overflow-x: hidden;
+    color: black;
+    background: #fff;
+  }
+
+  /* Single background */
+  .bg-image {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; 
+    height: 100vh;
+    background-image: url('p2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -10;
+    filter: brightness(0.85);
+  }
+
+  #container {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    z-index: 10;
+    background: transparent;
+  }
+
+  /* Gradient pink-to-black text for Hi! and I'm Rosie! */
+  .main-title {
+    font-family: 'Brush Script MT', cursive, 'Segoe Script', cursive;
+    font-size: 6rem;
+    background: linear-gradient(45deg, #ff66b2, #3a0a3a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+    line-height: 1;
+    user-select: none;
+  }
+  .main-subtitle {
+    font-family: 'Brush Script MT', cursive, 'Segoe Script', cursive;
+    font-size: 2.8rem;
+    color: #ff66b2;
+    margin-top: 10px;
+    user-select: none;
+  }
+
+  #buttons {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 30px;
+  }
+  button {
+    font-family: 'Century Gothic', sans-serif;
+    font-size: 1.8rem;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 30px;
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px 3px rgba(255, 102, 178, 0.8);
+  }
+  button:hover, button:focus {
+    background-color: rgba(0,0,0,0.9);
+    outline: none;
+    box-shadow:
+      0 0 12px 5px #ff66b2,
+      0 0 20px 7px rgba(255, 102, 178, 0.9);
+  }
+
+  section.content-section {
+    display: none;
+    position: relative;
+    max-width: 700px;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 30px 40px;
+    margin: 60px auto 40px auto;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    color: black;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    font-family: 'Century Gothic', sans-serif;
+  }
+  .back-button {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 1.8rem;
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 25px;
+    cursor: pointer;
+    z-index: 20;
+    transition: background-color 0.3s ease;
+  }
+  .back-button:hover, .back-button:focus {
+    background-color: rgba(0,0,0,0.9);
+    outline: none;
+  }
+
+  #aboutMeContent p,
+  #hobbyContent p,
+  #contactContent p,
+  #contactContent div.contact-item {
+    text-indent: 2em;
+    margin-bottom: 1em;
+    line-height: 1.4;
+  }
+
+  #hobbyContent {
+    max-width: 900px;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    margin-bottom: 1em;
+  }
+  .contact-item svg {
+    width: 24px;
+    height: 24px;
+    fill: black;
+    flex-shrink: 0;
+  }
+  footer {
+    text-align: center;
+    padding: 15px 10px;
+    font-size: 1rem;
+    background-color: rgba(255,255,255,0.7);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: black;
+    font-family: 'Century Gothic', sans-serif;
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-image" aria-hidden="true"></div>
+
+<div id="container" role="main">
+
+  <section id="introContent" tabindex="0" style="display:flex; flex-direction:column; align-items: center;">
+    <h1 class="main-title" aria-label="Hi!">Hi!</h1>
+    <h2 class="main-title" aria-label="I'm Rosie!">I'm Rosie!</h2>
+    <p class="main-subtitle" aria-label="wanna know me more?">wanna know me more?</p>
+
+    <div id="buttons" role="navigation" aria-label="Main navigation buttons">
+      <button id="aboutBtn" aria-expanded="false" aria-controls="aboutMeContent">About Me</button>
+      <button id="hobbyBtn" aria-expanded="false" aria-controls="hobbyContent">Hobby</button>
+      <button id="contactBtn" aria-expanded="false" aria-controls="contactContent">Contact</button>
+    </div>
+  </section>
+
+  <section id="aboutMeContent" class="content-section" tabindex="0" aria-hidden="true">
+    <p>Hi! I’m someone who believes that every challenge is a chance to grow. Life isn’t always easy, but I’ve learned to keep going no matter what. I live by the saying, “Fall seven times, stand up eight,” because resilience and perseverance are what shape us into who we’re meant to be.</p>
+    <p>I’m passionate about learning, exploring new things, and finding meaning in every experience. Whether I’m working on a project, spending time with loved ones, or simply reflecting on life, I always aim to stay grounded, grateful, and growing.</p>
+    <button class="back-button" id="backFromAboutBtn" aria-label="Back to Home">← Back</button>
+  </section>
+
+  <section id="hobbyContent" class="content-section" tabindex="0" aria-hidden="true">
+    <p>When I’m not busy, you’ll probably find me binge-watching K-Dramas — especially thrillers, action-packed series, and comedy shows with ghosts (yes, the fun and spooky ones!). I love the twists, the feels, and the kilig moments that only K-Dramas can give.</p>
+    <p>Food is life! I crave pansit, spicy carbonara, and palabok — those are my ultimate comfort foods. There's something about noodles and spice that just hits the spot every time.</p>
+    <p>And yep, I play Mobile Legends! Whether it's just for fun or some intense ranked matches, it's one of my go-to ways to relax and challenge myself.</p>
+    <button class="back-button" id="backFromHobbyBtn" aria-label="Back to Home">← Back</button>
+  </section>
+
+  <section id="contactContent" class="content-section" tabindex="0" aria-hidden="true">
+    <div class="contact-item">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.37 11.37 0 003.54.57 1 1 0 011 1V20a1 1 0 01-1 1A16 16 0 013 5a1 1 0 011-1h3.5a1 1 0 011 1 11.37 11.37 0 00.57 3.54 1 1 0 01-.21 1.11z"/></svg>
+      <span>Phone: 0915 351 7176</span>
+    </div>
+    <div class="contact-item">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11 9.95V15h-2v-3h2v-2c0-2 1-3 3-3h2v3h-2c-.5 0-1 .3-1 1v1h3l-.5 3h-2.5v6a10 10 0 008-9z"/></svg>
+      <span>Facebook: facebook.com/roseannramos09</span>
+    </div>
+    <div class="contact-item">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M17 2H7a5 5 0 00-5 5v10a5 5 0 005 5h10a5 5 0 005-5V7a5 5 0 00-5-5zM7 6h10a1 1 0 011 1v10a1 1 0 01-1 1H7a1 1 0 01-1-1V7a1 1 0 011-1z"/></svg>
+      <span>Mobile Legends ID: 397887968</span>
+    </div>
+    <div class="contact-item">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5z"/></svg>
+      <span>Email: roseannr.0925@gmail.com</span>
+    </div>
+    <button class="back-button" id="backFromContactBtn" aria-label="Back to Home">← Back</button>
+  </section>
+
+</div>
+
+<footer>All rights reserved © Rose Ann B. Ramos</footer>
+
+<script>
+  const aboutBtn = document.getElementById('aboutBtn');
+  const hobbyBtn = document.getElementById('hobbyBtn');
+  const contactBtn = document.getElementById('contactBtn');
+  const backFromAboutBtn = document.getElementById('backFromAboutBtn');
+  const backFromHobbyBtn = document.getElementById('backFromHobbyBtn');
+  const backFromContactBtn = document.getElementById('backFromContactBtn');
+
+  const introContent = document.getElementById('introContent');
+  const aboutContent = document.getElementById('aboutMeContent');
+  const hobbyContent = document.getElementById('hobbyContent');
+  const contactContent = document.getElementById('contactContent');
+
+  function showSection(section) {
+    introContent.style.display = 'none';
+    introContent.setAttribute('aria-hidden', 'true');
+
+    aboutContent.style.display = 'none';
+    aboutContent.setAttribute('aria-hidden', 'true');
+
+    hobbyContent.style.display = 'none';
+    hobbyContent.setAttribute('aria-hidden', 'true');
+
+    contactContent.style.display = 'none';
+    contactContent.setAttribute('aria-hidden', 'true');
+
+    section.style.display = 'block';
+    section.setAttribute('aria-hidden', 'false');
+    section.focus();
+  }
+
+  function showIntro() {
+    aboutContent.style.display = 'none';
+    aboutContent.setAttribute('aria-hidden', 'true');
+    hobbyContent.style.display = 'none';
+    hobbyContent.setAttribute('aria-hidden', 'true');
+    contactContent.style.display = 'none';
+    contactContent.setAttribute('aria-hidden', 'true');
+
+    introContent.style.display = 'flex';
+    introContent.setAttribute('aria-hidden', 'false');
+    introContent.focus();
+  }
+
+  aboutBtn.addEventListener('click', () => showSection(aboutContent));
+  hobbyBtn.addEventListener('click', () => showSection(hobbyContent));
+  contactBtn.addEventListener('click', () => showSection(contactContent));
+
+  backFromAboutBtn.addEventListener('click', showIntro);
+  backFromHobbyBtn.addEventListener('click', showIntro);
+  backFromContactBtn.addEventListener('click', showIntro);
+</script>
+
+</body>
+</html>
